@@ -222,8 +222,10 @@ module Juseragent
     function parseuseragent(user_agent_string::AbstractString)
       for value in USER_AGENT_PARSERS
 
-        match_vals = match(value.user_agent_re, user_agent_string).captures
+        match_vals = match(value.user_agent_re, user_agent_string)
         if match_vals != nothing 
+
+        	match_vals = match_vals.captures	
 
           #family
           if !ismissing(value.family_replacement)
@@ -273,8 +275,9 @@ module Juseragent
 
     function parseos(user_agent_string::AbstractString)
         for value in OS_PARSERS
-            match_vals = match(value.user_agent_re, user_agent_string).captures
+            match_vals = match(value.user_agent_re, user_agent_string)
             if match_vals != nothing 
+            	match_vals = match_vals.captures
                 #os
                 if !ismissing(value.os_replacement)
                     os = value.os_replacement
