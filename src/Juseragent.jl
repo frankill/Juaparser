@@ -3,30 +3,10 @@ module Juseragent
 
     export parsedevice, parseuseragent, parseos, DeviceResult, OSResult, UAResult
 
-
-    ##############################################################################
-    ##
-    ## Dependencies
-    ##
-    ##############################################################################
-
     using YAML
-
-    ##############################################################################
-    ##
-    ## Load YAML file
-    ##
-    ##############################################################################
 
     const REGEXES = YAML.load(open(joinpath(dirname(@__FILE__), "..", "regexes.yaml")));
 
-    ##############################################################################
-    ##
-    ## Create custom types to hold parsed YAML output
-    ##
-    ##############################################################################
-
-    # helper function used by constructors
     _check_missing_string(s::AbstractString) = String(s)
     _check_missing_string(::Missing) = missing
     _check_missing_string(x) = ArgumentError("Invalid string or missing passed: $x")
@@ -68,12 +48,6 @@ module Juseragent
                 _check_missing_string(brand_replacement), _check_missing_string(model_replacement))
         end
     end
-
-    ##############################################################################
-    ##
-    ## Create custom types to hold function results
-    ##
-    ##############################################################################
 
     struct DeviceResult
         family::String
@@ -183,12 +157,6 @@ module Juseragent
 
     const DEVICE_PARSERS = loaddevice()
 
-    ##############################################################################
-    ##
-    ## Functions for parsing user agent strings
-    ##
-    ##############################################################################
-
     # helper function for parsedevice
     function _inner_replace(str::AbstractString, group)
         # TODO this rather dangerously assumes that strings are $ followed by ints
@@ -202,7 +170,7 @@ module Juseragent
 
     # helper function for parsedevice
     function _multireplace(str::AbstractString, mtch::RegexMatch)
-        _str = replace(str, r"\$(\d)", m -> _inner_replace(m, mtch.captures))
+        _str = replace(str, r"\$(\d)" => s"$(_inner_replace(\1,mtch.captures))\1"  )
         _str = replace(_str, r"^\s+|\s+$", "")
         length(_str) == 0 ? missing : _str
     end
