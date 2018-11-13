@@ -1,5 +1,5 @@
 __precompile__()
-module UAParser
+module Juseragent
 
     export parsedevice, parseuseragent, parseos, DeviceResult, OSResult, UAResult
 
