@@ -1,6 +1,6 @@
 authors = ["frank"]
 name = "Juseragent"
-uuid = "b992a966-e6ff-11e8-3fdb-4f129b99e5be"
+uuid = "eb345b82-e6fe-11e8-27e2-89368c9aeaf2"
 version = "0.1.1"
 
 [deps]
