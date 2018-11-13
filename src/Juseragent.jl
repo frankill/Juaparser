@@ -172,10 +172,10 @@ module Juseragent
     function _multireplace(str::AbstractString, mtch::RegexMatch)
         _b = match(r"\$(\d)", str ) 
         if _b != nothing 
-            _str = replace(str, r"\$(\d)" => _inner_replace(_b.match,mtch.captures)  )
+            str = replace(str, r"\$(\d)" => _inner_replace(_b.match,mtch.captures)  )
         end 
-        _str = replace(_str, r"^\s+|\s+$" => s"\1")
-        length(_str) == 0 ? missing : _str
+        str = replace(str, r"^\s+|\s+$" => s"\1")
+        length(str) == 0 ? missing : str
     end
 
 
