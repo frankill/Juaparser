@@ -4,7 +4,7 @@ uuid = "10a8e9b0-e6f9-11e8-1183-c5affaffcce6"
 version = "0.1.0"
 
 [deps]
-YAML = "4a318301-865b-4a4a-af07-6c923750304e"
+YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
