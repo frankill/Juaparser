@@ -171,7 +171,7 @@ module Juseragent
     # helper function for parsedevice
     function _multireplace(str::AbstractString, mtch::RegexMatch)
         num = match(r"\$(\d)", str )
-        _str = replace(str, r"\$(\d)" => _inner_replace(num[1] ,mtch.captures)  )
+        _str = replace(str, r"\$(\d)" => _inner_replace(num.match,mtch.captures)  )
         _str = replace(_str, r"^\s+|\s+$" => s"\1")
         length(_str) == 0 ? missing : _str
     end
