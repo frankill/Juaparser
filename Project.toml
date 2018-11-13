@@ -1,7 +1,7 @@
 authors = ["frank"]
 name = "Juaparser"
-uuid = "139258eb-c7dd-5548-aef6-6c8ebc1d244f"
-version = "0.1.0"
+uuid = "b992a966-e6ff-11e8-3fdb-4f129b99e5be"
+version = "0.1.1"
 
 [deps]
 YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
