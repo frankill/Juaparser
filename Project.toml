@@ -1,6 +1,6 @@
 authors = ["frank"]
 name = "Juaparser"
-uuid = "eb345b82-e6fe-11e8-27e2-89368c9aeaf2"
+uuid = "139258eb-c7dd-5548-aef6-6c8ebc1d244f"
 version = "0.1.0"
 
 [deps]
