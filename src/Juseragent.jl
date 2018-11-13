@@ -289,7 +289,7 @@ module Juseragent
                 if !ismissing(value.os_v1_replacement)
                     os_v1 = value.os_v1_replacement
                 elseif length(match_vals) > 1
-                    os_v1 = match_vals[2]
+                    os_v1 = match_vals[2] ==nothing ? missing : match_vals[2]
                 else
                     os_v1 = missing
                 end
@@ -298,21 +298,21 @@ module Juseragent
                 if !ismissing(value.os_v2_replacement)
                     os_v2 = value.os_v2_replacement
                 elseif length(match_vals) > 2
-                    os_v2 = match_vals[3]
+                    os_v2 = match_vals[3] ==nothing ? missing : match_vals[3]
                 else
                     os_v2 = missing
                 end
 
                 #os_v3
                 if length(match_vals) > 3
-                    os_v3 = match_vals[4]
+                    os_v3 = match_vals[4] ==nothing ? missing : match_vals[4]
                 else
                     os_v3 = missing
                 end
 
                 #os_v4
                 if length(match_vals) > 4
-                    os_v4 = match_vals[5]
+                    os_v4 = match_vals[5] ==nothing ? missing : match_vals[5]
                 else
                     os_v4 = missing
                 end
