@@ -174,7 +174,7 @@ module Juseragent
         if _b != nothing 
             str = replace(str, r"\$(\d)" => _inner_replace(_b.match,mtch.captures)  )
         end 
-        str = replace(str, r"^\s+|\s+$" => s"\1")
+        str = replace(str, r"^\s+|\s+$" => "")
         length(str) == 0 ? missing : str
     end
 
