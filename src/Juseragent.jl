@@ -54,7 +54,7 @@ module Juseragent
         brand::Union{String, Missing}
         model::Union{String, Missing}
 
-        function DeviceResult(family::AbstractString, brand, model)
+        function DeviceResult(family, brand, model)
             new(_check_missing_string(family), _check_missing_string(brand), _check_missing_string(model))
         end
     end
@@ -65,7 +65,7 @@ module Juseragent
         minor::Union{String, Missing}
         patch::Union{String, Missing}
 
-        function UAResult(family::AbstractString, major, minor, patch)
+        function UAResult(family, major, minor, patch)
             new(_check_missing_string(family), _check_missing_string(major), _check_missing_string(minor),
                 _check_missing_string(patch))
         end
@@ -78,7 +78,7 @@ module Juseragent
         patch::Union{String, Missing}
         patch_minor::Union{String, Missing}
 
-        function OSResult(family::AbstractString, major, minor, patch, patch_minor)
+        function OSResult(family, major, minor, patch, patch_minor)
             new(_check_missing_string(family), _check_missing_string(major), _check_missing_string(minor),
                 _check_missing_string(patch), _check_missing_string(patch_minor))
         end
