@@ -5,6 +5,7 @@ module Juseragent
 
     using YAML
 
+    const MType = Union{String, Missing}
     const REGEXES = YAML.load(open(joinpath(dirname(@__FILE__), "..", "regexes.yaml")));
 
     _check_missing_string(s::AbstractString) = String(s)
@@ -13,9 +14,9 @@ module Juseragent
 
     struct UserAgentParser
         user_agent_re::Regex
-        family_replacement::Union{String, Missing}
-        v1_replacement::Union{String, Missing}
-        v2_replacement::Union{String, Missing}
+        family_replacement::MType
+        v1_replacement::MType
+        v2_replacement::MType
 
         function UserAgentParser(user_agent_re::Regex, family_replacement, v1_replacement,
                                  v2_replacement)
@@ -26,9 +27,9 @@ module Juseragent
 
     struct OSParser
         user_agent_re::Regex
-        os_replacement::Union{String, Missing}
-        os_v1_replacement::Union{String, Missing}
-        os_v2_replacement::Union{String, Missing}
+        os_replacement::MType
+        os_v1_replacement::MType
+        os_v2_replacement::MType
 
         function OSParser(user_agent_re::Regex, os_replacement, os_v1_replacement, os_v2_replacement)
             new(user_agent_re, _check_missing_string(os_replacement), _check_missing_string(os_v1_replacement),
@@ -38,9 +39,9 @@ module Juseragent
 
     struct DeviceParser
         user_agent_re::Regex
-        device_replacement::Union{String, Missing}
-        brand_replacement::Union{String, Missing}
-        model_replacement::Union{String, Missing}
+        device_replacement::MType
+        brand_replacement::MType
+        model_replacement::MType
 
         function DeviceParser(user_agent_re::Regex, device_replacement, brand_replacement,
                               model_replacement)
@@ -50,9 +51,9 @@ module Juseragent
     end
 
     struct DeviceResult
-        family::Union{String, Missing}
-        brand::Union{String, Missing}
-        model::Union{String, Missing}
+        family::MType
+        brand::MType
+        model::MType
 
         function DeviceResult(family, brand, model)
             new(_check_missing_string(family), _check_missing_string(brand), _check_missing_string(model))
@@ -60,10 +61,10 @@ module Juseragent
     end
 
     struct UAResult
-        family::Union{String, Missing}
-        major::Union{String, Missing}
-        minor::Union{String, Missing}
-        patch::Union{String, Missing}
+        family::MType
+        major::MType
+        minor::MType
+        patch::MType
 
         function UAResult(family, major, minor, patch)
             new(_check_missing_string(family), _check_missing_string(major), _check_missing_string(minor),
@@ -72,11 +73,11 @@ module Juseragent
     end
 
     struct OSResult
-        family::String
-        major::Union{String, Missing}
-        minor::Union{String, Missing}
-        patch::Union{String, Missing}
-        patch_minor::Union{String, Missing}
+        family::MType
+        major::MType
+        minor::MType
+        patch::MType
+        patch_minor::MType
 
         function OSResult(family, major, minor, patch, patch_minor)
             new(_check_missing_string(family), _check_missing_string(major), _check_missing_string(minor),
