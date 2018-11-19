@@ -50,7 +50,7 @@ module Juseragent
     end
 
     struct DeviceResult
-        family::String
+        family::Union{String, Missing}
         brand::Union{String, Missing}
         model::Union{String, Missing}
 
@@ -60,7 +60,7 @@ module Juseragent
     end
 
     struct UAResult
-        family::String
+        family::Union{String, Missing}
         major::Union{String, Missing}
         minor::Union{String, Missing}
         patch::Union{String, Missing}
